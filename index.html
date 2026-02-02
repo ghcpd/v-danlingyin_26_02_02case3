@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subscription & Expense Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">Desktop-first • In-memory data</p>
+      <h1>Subscription & Expense Tracker</h1>
+      <p class="lede">Track recurring costs, spot renewals early, and keep monthly burn in view.</p>
+    </div>
+    <div class="topbar-actions">
+      <button id="addBtn" class="btn primary">Add Subscription</button>
+      <nav class="tabs" aria-label="Views">
+        <button data-view="overview" class="tab active">Overview</button>
+        <button data-view="summary" class="tab">Expense Summary</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="overview" class="view active">
+      <div class="grid cards" id="overviewCards"></div>
+      <div class="panel">
+        <div class="panel-header">
+          <h2>Subscriptions</h2>
+          <div class="filters">
+            <label>Search
+              <input type="search" id="searchInput" placeholder="Search name or category" />
+            </label>
+            <label>Status
+              <select id="statusFilter">
+                <option value="all">All</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+            </label>
+            <label>Category
+              <select id="categoryFilter">
+                <option value="all">All</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th>Billing</th>
+                <th>Monthly</th>
+                <th>Next Renewal</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="subscriptionBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="summary" class="view">
+      <div class="grid cards" id="summaryCards"></div>
+      <div class="grid two-col">
+        <div class="panel">
+          <div class="panel-header"><h2>Category Breakdown</h2></div>
+          <ul class="list" id="categoryBreakdown"></ul>
+        </div>
+        <div class="panel">
+          <div class="panel-header"><h2>Upcoming Renewals</h2></div>
+          <ul class="list" id="upcomingList"></ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <aside id="detailDrawer" class="drawer" aria-label="Subscription detail">
+    <div class="drawer-header">
+      <h2 id="drawerTitle">Add Subscription</h2>
+      <button id="closeDrawer" class="icon-btn" aria-label="Close">×</button>
+    </div>
+    <form id="subscriptionForm" class="form">
+      <input type="hidden" id="subscriptionId" />
+      <label>Name
+        <input id="nameInput" required />
+      </label>
+      <label>Category
+        <input id="categoryInput" placeholder="e.g., Streaming" required />
+      </label>
+      <label>Status
+        <select id="statusInput">
+          <option value="active">Active</option>
+          <option value="inactive">Inactive</option>
+        </select>
+      </label>
+      <label>Billing Cycle
+        <select id="cycleInput">
+          <option value="monthly">Monthly</option>
+          <option value="yearly">Yearly</option>
+          <option value="custom">Custom (months)</option>
+        </select>
+      </label>
+      <label id="customCycleWrap" class="hidden">Custom cycle length (months)
+        <input type="number" id="customMonthsInput" min="1" value="3" />
+      </label>
+      <label>Cost per cycle
+        <input type="number" id="costInput" min="0" step="0.01" required />
+      </label>
+      <label>Start date
+        <input type="date" id="startDateInput" required />
+      </label>
+      <label>End date (optional)
+        <input type="date" id="endDateInput" />
+      </label>
+      <div class="form-actions">
+        <button type="submit" class="btn primary">Save</button>
+        <button type="button" id="resetForm" class="btn ghost">Reset</button>
+      </div>
+    </form>
+  </aside>
+
+  <div id="overlay" class="overlay"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
