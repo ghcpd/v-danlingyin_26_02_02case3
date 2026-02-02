@@ -1,0 +1,299 @@
+.expense-summary-container {
+  width: 100%;
+}
+
+.expense-summary-container h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Summary Cards */
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.summary-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.summary-card:hover {
+  transform: translateY(-4px);
+}
+
+.summary-card.total-monthly {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+.summary-card.total-yearly {
+  background: linear-gradient(135deg, #4a90e2 0%, #1e3c72 100%);
+}
+
+.summary-card.subscription-count {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.card-icon {
+  font-size: 3rem;
+  opacity: 0.9;
+}
+
+.card-content {
+  flex: 1;
+}
+
+.card-content h3 {
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.card-content .amount {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.card-content .subtitle {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* Breakdown Section */
+.breakdown-section {
+  background-color: var(--surface);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow);
+  margin-bottom: 2rem;
+}
+
+.breakdown-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.category-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.category-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.category-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 1.05rem;
+}
+
+.category-amount {
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.category-bar-container {
+  background-color: var(--background);
+  height: 12px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.category-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  border-radius: 6px;
+  transition: width 0.5s ease;
+}
+
+.category-percentage {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+/* Detailed List */
+.detailed-list {
+  background-color: var(--surface);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow);
+  margin-bottom: 2rem;
+  overflow-x: auto;
+}
+
+.detailed-list h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.subscriptions-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.subscriptions-table thead {
+  background-color: var(--background);
+}
+
+.subscriptions-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--border);
+}
+
+.subscriptions-table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+.subscriptions-table tbody tr:hover {
+  background-color: var(--background);
+}
+
+.name-cell {
+  font-weight: 600;
+}
+
+.category-cell {
+  text-transform: capitalize;
+}
+
+.category-badge {
+  background-color: var(--background);
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  display: inline-block;
+}
+
+.cost-cell {
+  text-align: right;
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
+.totals-row {
+  font-weight: 700;
+  background-color: var(--background);
+}
+
+.totals-row td {
+  padding: 1.2rem 1rem;
+  border-bottom: none;
+}
+
+.cost-cell.total {
+  font-size: 1.1rem;
+  color: var(--secondary-color);
+}
+
+.empty-message {
+  color: var(--text-secondary);
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.05rem;
+}
+
+/* Insights Section */
+.insights-section {
+  background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(253, 203, 110, 0.3);
+}
+
+.insights-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.insights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.insights p {
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.insights strong {
+  color: #d63031;
+  font-weight: 700;
+}
+
+.insights .warning {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 0.8rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--danger-color);
+}
+
+@media (max-width: 768px) {
+  .summary-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-card {
+    padding: 1.5rem;
+  }
+
+  .card-icon {
+    font-size: 2.5rem;
+  }
+
+  .card-content .amount {
+    font-size: 1.6rem;
+  }
+
+  .breakdown-section,
+  .detailed-list,
+  .insights-section {
+    padding: 1.5rem;
+  }
+
+  .subscriptions-table {
+    font-size: 0.85rem;
+  }
+
+  .subscriptions-table th,
+  .subscriptions-table td {
+    padding: 0.7rem;
+  }
+}
