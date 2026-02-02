@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription & Expense Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <span class="logo-icon">💳</span>
+                <h1>SubTracker</h1>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item active" data-view="overview">
+                    <span class="nav-icon">📋</span>
+                    <span>Overview</span>
+                </li>
+                <li class="nav-item" data-view="subscriptions">
+                    <span class="nav-icon">📦</span>
+                    <span>Subscriptions</span>
+                </li>
+                <li class="nav-item" data-view="summary">
+                    <span class="nav-icon">📊</span>
+                    <span>Expense Summary</span>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Overview View -->
+            <section id="overview-view" class="view active">
+                <header class="view-header">
+                    <h2>Dashboard Overview</h2>
+                    <button class="btn btn-primary" id="add-subscription-btn">
+                        <span>+</span> Add Subscription
+                    </button>
+                </header>
+
+                <!-- Summary Cards -->
+                <div class="summary-cards">
+                    <div class="summary-card">
+                        <div class="card-icon monthly">💰</div>
+                        <div class="card-content">
+                            <span class="card-label">Monthly Expenses</span>
+                            <span class="card-value" id="monthly-total">$0.00</span>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon yearly">📅</div>
+                        <div class="card-content">
+                            <span class="card-label">Yearly Expenses</span>
+                            <span class="card-value" id="yearly-total">$0.00</span>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon active-subs">✅</div>
+                        <div class="card-content">
+                            <span class="card-label">Active Subscriptions</span>
+                            <span class="card-value" id="active-count">0</span>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon upcoming">⏰</div>
+                        <div class="card-content">
+                            <span class="card-label">Upcoming Renewals</span>
+                            <span class="card-value" id="upcoming-count">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upcoming Renewals Section -->
+                <div class="section">
+                    <h3>Upcoming Renewals (Next 7 Days)</h3>
+                    <div class="renewals-list" id="upcoming-renewals">
+                        <!-- Dynamic content -->
+                    </div>
+                </div>
+
+                <!-- Recent Subscriptions -->
+                <div class="section">
+                    <h3>Recent Subscriptions</h3>
+                    <div class="subscriptions-grid" id="recent-subscriptions">
+                        <!-- Dynamic content -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Subscriptions View -->
+            <section id="subscriptions-view" class="view">
+                <header class="view-header">
+                    <h2>All Subscriptions</h2>
+                    <button class="btn btn-primary" id="add-subscription-btn-2">
+                        <span>+</span> Add Subscription
+                    </button>
+                </header>
+
+                <!-- Filters -->
+                <div class="filters-bar">
+                    <div class="filter-group">
+                        <label>Status:</label>
+                        <select id="filter-status">
+                            <option value="all">All</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Category:</label>
+                        <select id="filter-category">
+                            <option value="all">All Categories</option>
+                            <option value="streaming">Streaming</option>
+                            <option value="software">Software</option>
+                            <option value="utilities">Utilities</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="health">Health & Fitness</option>
+                            <option value="education">Education</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Billing Cycle:</label>
+                        <select id="filter-cycle">
+                            <option value="all">All</option>
+                            <option value="monthly">Monthly</option>
+                            <option value="yearly">Yearly</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Subscriptions Table -->
+                <div class="subscriptions-table-container">
+                    <table class="subscriptions-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Cost</th>
+                                <th>Billing Cycle</th>
+                                <th>Next Renewal</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="subscriptions-table-body">
+                            <!-- Dynamic content -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Expense Summary View -->
+            <section id="summary-view" class="view">
+                <header class="view-header">
+                    <h2>Expense Summary</h2>
+                </header>
+
+                <div class="summary-content">
+                    <!-- Expense Overview -->
+                    <div class="expense-overview">
+                        <div class="expense-card large">
+                            <h3>Total Monthly Cost</h3>
+                            <div class="expense-amount" id="summary-monthly">$0.00</div>
+                            <p class="expense-note">Normalized from all billing cycles</p>
+                        </div>
+                        <div class="expense-card large">
+                            <h3>Total Yearly Cost</h3>
+                            <div class="expense-amount" id="summary-yearly">$0.00</div>
+                            <p class="expense-note">Projected annual expenses</p>
+                        </div>
+                    </div>
+
+                    <!-- Category Breakdown -->
+                    <div class="section">
+                        <h3>Expenses by Category</h3>
+                        <div class="category-breakdown" id="category-breakdown">
+                            <!-- Dynamic content -->
+                        </div>
+                    </div>
+
+                    <!-- Billing Cycle Breakdown -->
+                    <div class="section">
+                        <h3>Expenses by Billing Cycle</h3>
+                        <div class="cycle-breakdown" id="cycle-breakdown">
+                            <!-- Dynamic content -->
+                        </div>
+                    </div>
+
+                    <!-- Expense Timeline -->
+                    <div class="section">
+                        <h3>Monthly Expense Timeline</h3>
+                        <div class="timeline-chart" id="timeline-chart">
+                            <!-- Dynamic content -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal for Add/Edit Subscription -->
+    <div class="modal-overlay" id="subscription-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modal-title">Add Subscription</h3>
+                <button class="modal-close" id="modal-close">&times;</button>
+            </div>
+            <form id="subscription-form">
+                <input type="hidden" id="subscription-id">
+                
+                <div class="form-group">
+                    <label for="sub-name">Subscription Name *</label>
+                    <input type="text" id="sub-name" required placeholder="e.g., Netflix, Spotify">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="sub-category">Category *</label>
+                        <select id="sub-category" required>
+                            <option value="">Select category</option>
+                            <option value="streaming">Streaming</option>
+                            <option value="software">Software</option>
+                            <option value="utilities">Utilities</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="health">Health & Fitness</option>
+                            <option value="education">Education</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="sub-cost">Cost ($) *</label>
+                        <input type="number" id="sub-cost" required min="0" step="0.01" placeholder="0.00">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="sub-cycle">Billing Cycle *</label>
+                        <select id="sub-cycle" required>
+                            <option value="monthly">Monthly</option>
+                            <option value="yearly">Yearly</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="custom-cycle-group" style="display: none;">
+                        <label for="sub-custom-months">Cycle (months)</label>
+                        <input type="number" id="sub-custom-months" min="1" max="60" placeholder="e.g., 3">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="sub-start-date">Start Date *</label>
+                        <input type="date" id="sub-start-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sub-end-date">End Date (optional)</label>
+                        <input type="date" id="sub-end-date">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="sub-status">Status</label>
+                    <select id="sub-status">
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancel-btn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Subscription</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal-overlay" id="delete-modal">
+        <div class="modal modal-small">
+            <div class="modal-header">
+                <h3>Confirm Delete</h3>
+                <button class="modal-close" id="delete-modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete <strong id="delete-sub-name"></strong>?</p>
+                <p class="warning-text">This action cannot be undone.</p>
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-secondary" id="cancel-delete-btn">Cancel</button>
+                <button class="btn btn-danger" id="confirm-delete-btn">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
