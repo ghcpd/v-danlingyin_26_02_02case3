@@ -1,0 +1,38 @@
+prompt：
+You are a senior front-end engineer.
+Your task is to design and implement a complete Subscription & Expense Tracker web application from scratch.
+
+Application Description:
+The application helps users track recurring subscriptions and fixed expenses, such as streaming services, software plans, or monthly bills.
+
+Core Functional Requirements:
+1. Users can:
+   - Add, edit, and remove subscriptions
+   - Define billing cycle (monthly, yearly, custom)
+   - Specify cost, start date, and optional end date
+2. The application must:
+   - Show a list of active and inactive subscriptions
+   - Calculate total monthly and yearly expenses
+   - Highlight upcoming renewal dates
+3. Users should be able to:
+   - Filter subscriptions by status or category
+   - View expense summaries
+
+Required Screens:
+- Subscription list / overview
+- Subscription detail or edit page
+- Expense summary view
+
+Non-functional Requirements:
+- No payment integration required
+- Use mock or in-memory data
+- UI should clearly communicate time-based costs
+
+Technology:
+- Any frontend framework or vanilla JavaScript is allowed.
+
+Deliverables:
+- Complete UI structure and navigation
+- Data models for subscriptions and expense calculations
+- UI logic for cost aggregation and renewal reminders
+- Explanation of how recurring calculations are handled
