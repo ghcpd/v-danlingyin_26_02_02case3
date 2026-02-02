@@ -1,0 +1,20 @@
+Application Name: Subscription & Expense Tracker
+
+Entities:
+- Subscription (id, name, category, cost, billingCycle, startDate, endDate, status)
+
+Billing Cycles:
+- Monthly
+- Yearly
+- Custom (in months)
+
+UI Expectations:
+- Clear distinction between active and inactive subscriptions
+- Summary numbers must update based on data changes
+- Upcoming renewals should be visually noticeable
+
+Constraints:
+- Desktop-first web application
+- No backend or authentication
+- Focus on correctness and clarity
+
